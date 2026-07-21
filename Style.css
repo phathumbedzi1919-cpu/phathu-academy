@@ -94,3 +94,44 @@ nav div a:hover{
     margin-bottom:20px;
     border-radius:15px;
 }
+.login{
+
+width:90%;
+
+max-width:400px;
+
+margin:60px auto;
+
+text-align:center;
+
+}
+
+.login input{
+
+width:100%;
+
+padding:15px;
+
+margin:15px 0;
+
+font-size:18px;
+
+border-radius:10px;
+
+border:none;
+
+}
+
+.login button{
+
+width:100%;
+
+padding:15px;
+
+font-size:18px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
