@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phathu Academy Admin</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Phathu Academy</h1>
+
+<h2>Administrator Dashboard</h2>
+
+<div class="stats">
+
+<h3>Total Students:
+<span id="totalStudents">0</span>
+
+</h3>
+
+<h3>Pending Approval:
+<span id="pendingStudents">0</span>
+
+</h3>
+
+<h3>Approved Students:
+<span id="approvedStudents">0</span>
+
+</h3>
+
+</div>
+
+<hr>
+
+<h2>Registered Students</h2>
+
+<div id="students"></div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+
+<script src="admin.js"></script>
+
+</body>
+</html>

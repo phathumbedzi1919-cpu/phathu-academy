@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Phathu Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Phathu Academy</h1>
+    <h2>Create Student Account</h2>
+
+    <form id="registerForm">
+
+        <input
+            type="text"
+            id="fullname"
+            placeholder="Full Name"
+            required
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            required
+        >
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Phone Number"
+            required
+        >
+
+        <input
+            type="tel"
+            id="parentPhone"
+            placeholder="Parent / Guardian Phone"
+            required
+        >
+
+        <select id="grade">
+
+            <option value="">Select Grade</option>
+
+            <option>Grade 10</option>
+            <option>Grade 11</option>
+            <option>Grade 12</option>
+
+        </select>
+
+        <input
+            type="text"
+            id="subjects"
+            placeholder="Subjects (e.g Mathematics, Physical Sciences)"
+            required
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+        >
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+            required
+        >
+
+        <button type="submit">
+            Create Account
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+<script src="register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Student Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Welcome to Phathu Academy</h1>
+
+<h2>Student Dashboard</h2>
+
+<p>You have successfully logged in.</p>
+
+<button onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+
+<script>
+
+function logout(){
+
+auth.signOut();
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
