@@ -1,5 +1,5 @@
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "apiKey: "AIzaSyCzLqy8TJgTtpBbsusyreogoYPyWMTYIw8",",
   authDomain: "phathuacademy.firebaseapp.com",
   projectId: "phathuacademy",
   storageBucket: "phathuacademy.firebasestorage.app",
