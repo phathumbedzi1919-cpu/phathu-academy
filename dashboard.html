@@ -1,50 +1,306 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
 
-<title>Student Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<title>Student Dashboard | Phathu Academy</title>
+
+<link rel="stylesheet" href="dashboard.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<header class="topbar">
 
-<h1>Welcome to Phathu Academy</h1>
+    <div class="logo">
 
-<h2>Student Dashboard</h2>
+        <h1>Phathu Academy</h1>
 
-<p>You have successfully logged in.</p>
+        <p>Learn • Build • Succeed</p>
 
-<button onclick="logout()">
+    </div>
 
-Logout
+    <div class="student-info">
 
-</button>
+        <span id="studentName">Loading...</span>
 
-</div>
+        <button id="logoutBtn">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+<main class="dashboard">
+
+    <!-- LEFT COLUMN -->
+
+    <aside class="sidebar">
+
+        <div class="profile-card">
+
+            <img
+            src="https://via.placeholder.com/120"
+            id="profileImage"
+            alt="Student">
+
+            <h2 id="profileName">
+
+                Loading...
+
+            </h2>
+
+            <p id="profileGrade">
+
+                Grade
+
+            </p>
+
+            <p id="profileSubjects">
+
+                Subjects
+
+            </p>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li><a href="#">🏠 Dashboard</a></li>
+
+                <li><a href="#">📚 My Courses</a></li>
+
+                <li><a href="#">📄 Notes</a></li>
+
+                <li><a href="#">🎥 Videos</a></li>
+
+                <li><a href="#">📝 Quizzes</a></li>
+
+                <li><a href="#">📈 Progress</a></li>
+
+                <li><a href="#">⚙ Profile</a></li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- RIGHT COLUMN -->
+
+    <section class="content">
+
+        <h2>
+
+            Welcome back,
+
+            <span id="welcomeName">
+
+                Student
+
+            </span>
+
+            👋
+
+        </h2>
+
+        <!-- SUMMARY -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+
+                    Courses
+
+                </h3>
+
+                <p id="courseCount">
+
+                    0
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Lessons Completed
+
+                </h3>
+
+                <p id="lessonCount">
+
+                    0
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Quizzes
+
+                </h3>
+
+                <p id="quizCount">
+
+                    0
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Payment
+
+                </h3>
+
+                <p id="paymentStatus">
+
+                    Active
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- CONTINUE LEARNING -->
+
+        <section class="panel">
+
+            <h2>
+
+                Continue Learning
+
+            </h2>
+
+            <div class="course-grid">
+
+                <div class="course">
+
+                    <h3>
+
+                        Mathematics
+
+                    </h3>
+
+                    <button>
+
+                        Continue
+
+                    </button>
+
+                </div>
+
+                <div class="course">
+
+                    <h3>
+
+                        Physical Sciences
+
+                    </h3>
+
+                    <button>
+
+                        Continue
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ANNOUNCEMENTS -->
+
+        <section class="panel">
+
+            <h2>
+
+                Announcements
+
+            </h2>
+
+            <div id="announcements">
+
+                No announcements yet.
+
+            </div>
+
+        </section>
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="panel">
+
+            <h2>
+
+                Quick Actions
+
+            </h2>
+
+            <div class="actions">
+
+                <button>
+
+                    📄 Notes
+
+                </button>
+
+                <button>
+
+                    🎥 Videos
+
+                </button>
+
+                <button>
+
+                    📝 Quizzes
+
+                </button>
+
+                <button>
+
+                    📈 Progress
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script src="firebase.js"></script>
 
-<script>
-
-function logout(){
-
-auth.signOut();
-
-window.location.href="login.html";
-
-}
-
-</script>
+<script src="dashboard.js"></script>
 
 </body>
-
 </html>

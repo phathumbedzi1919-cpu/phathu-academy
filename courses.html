@@ -1,69 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Courses - Phathu Academy</title>
-<link rel="stylesheet" href="style.css">
+
+<title>Course Management | Phathu Academy</title>
+
+<link rel="stylesheet" href="courses.css">
+
 </head>
 
 <body>
 
-<nav>
+<header class="topbar">
 
-<h2>🎓 Phathu Academy</h2>
+    <div>
 
-<div>
+        <h1>Phathu Academy</h1>
 
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="courses.html">Courses</a>
+        <p>Course Management System</p>
 
-</div>
+    </div>
 
-</nav>
+    <button id="logoutBtn">
 
-<section class="courses">
+        Logout
 
-<h1>Our Courses</h1>
+    </button>
 
-<div class="card">
-<h2>📘 Grade 10 Mathematics</h2>
-<p>Learn Algebra, Geometry, Trigonometry and more.</p>
-<button>Open Course</button>
-</div>
+</header>
 
-<div class="card">
-<h2>📘 Grade 11 Mathematics</h2>
-<p>Master advanced mathematics with step-by-step lessons.</p>
-<button>Open Course</button>
-</div>
+<main class="dashboard">
 
-<div class="card">
-<h2>📘 Grade 12 Mathematics</h2>
-<p>Prepare for final exams with comprehensive lessons.</p>
-<button>Open Course</button>
-</div>
+    <!-- SIDEBAR -->
 
-<div class="card">
-<h2>🧪 Grade 10 Physical Sciences</h2>
-<p>Mechanics, Electricity, Chemistry and practical learning.</p>
-<button>Open Course</button>
-</div>
+    <aside class="sidebar">
 
-<div class="card">
-<h2>🧪 Grade 11 Physical Sciences</h2>
-<p>Explore advanced Physics and Chemistry concepts.</p>
-<button>Open Course</button>
-</div>
+        <h2>Navigation</h2>
 
-<div class="card">
-<h2>🧪 Grade 12 Physical Sciences</h2>
-<p>Prepare for NSC examinations with confidence.</p>
-<button>Open Course</button>
-</div>
+        <ul>
 
-</section>
+            <li><a href="admin.html">🏠 Admin Dashboard</a></li>
+
+            <li><a href="#">📚 Courses</a></li>
+
+            <li><a href="#">🎥 Lessons</a></li>
+
+            <li><a href="#">📄 Notes</a></li>
+
+            <li><a href="#">📝 Quizzes</a></li>
+
+            <li><a href="#">👨‍🎓 Students</a></li>
+
+            <li><a href="#">📢 Announcements</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- CONTENT -->
+
+    <section class="content">
+
+        <h2>
+
+            Create New Course
+
+        </h2>
+
+        <section class="panel">
+
+            <input
+            type="text"
+            id="courseTitle"
+            placeholder="Course Title">
+
+            <select id="category">
+
+                <option value="">Category</option>
+
+                <option>School</option>
+
+                <option>University</option>
+
+                <option>Business</option>
+
+                <option>Trading</option>
+
+                <option>Programming</option>
+
+            </select>
+
+            <select id="grade">
+
+                <option value="">Grade / Level</option>
+
+                <option>Grade 8</option>
+
+                <option>Grade 9</option>
+
+                <option>Grade 10</option>
+
+                <option>Grade 11</option>
+
+                <option>Grade 12</option>
+
+                <option>University</option>
+
+            </select>
+
+            <select id="subject">
+
+                <option value="">Subject</option>
+
+                <option>Mathematics</option>
+
+                <option>Physical Sciences</option>
+
+                <option>Business</option>
+
+                <option>Programming</option>
+
+                <option>Trading</option>
+
+            </select>
+
+            <textarea
+
+                id="description"
+
+                placeholder="Course Description"
+
+            ></textarea>
+
+            <button id="saveCourse">
+
+                Save Course
+
+            </button>
+
+        </section>
+
+        <section class="panel">
+
+            <h2>
+
+                Search Course
+
+            </h2>
+
+            <input
+
+                type="text"
+
+                id="searchCourse"
+
+                placeholder="Search Course"
+
+            >
+
+        </section>
+
+        <section class="panel">
+
+            <h2>
+
+                Existing Courses
+
+            </h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Course</th>
+
+                        <th>Category</th>
+
+                        <th>Grade</th>
+
+                        <th>Subject</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="courseTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </section>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+
+<script src="courses.js"></script>
 
 </body>
+
 </html>

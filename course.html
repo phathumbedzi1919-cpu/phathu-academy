@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Course | Phathu Academy</title>
+
+<link rel="stylesheet" href="course.css">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+
+        <h1>Phathu Academy</h1>
+
+        <p>Student Learning Portal</p>
+
+    </div>
+
+    <button id="logoutBtn">
+
+        Logout
+
+    </button>
+
+</header>
+
+<main class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>Student Menu</h2>
+
+        <ul>
+
+            <li><a href="dashboard.html">🏠 Dashboard</a></li>
+
+            <li><a href="#">📚 My Courses</a></li>
+
+            <li><a href="#">📈 Progress</a></li>
+
+            <li><a href="#">🏆 Certificates</a></li>
+
+            <li><a href="#">👤 Profile</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <section class="content">
+
+        <h2 id="courseTitle">
+
+            Loading Course...
+
+        </h2>
+
+        <p id="courseDescription">
+
+            Please wait...
+
+        </p>
+
+        <div class="progressBox">
+
+            <h3>Course Progress</h3>
+
+            <div class="progressBar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+            <p id="progressText">
+
+                0% Complete
+
+            </p>
+
+        </div>
+
+        <section class="panel">
+
+            <h2>
+
+                Lessons
+
+            </h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Lesson</th>
+
+                        <th>Video</th>
+
+                        <th>Notes</th>
+
+                        <th>Quiz</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="lessonTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </section>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+
+<script src="course.js"></script>
+
+</body>
+
+</html>

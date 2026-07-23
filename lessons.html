@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lesson Management | Phathu Academy</title>
+
+<link rel="stylesheet" href="lessons.css">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+
+        <h1>Phathu Academy</h1>
+
+        <p>Lesson Management System</p>
+
+    </div>
+
+    <button id="logoutBtn">
+
+        Logout
+
+    </button>
+
+</header>
+
+<main class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h2>Navigation</h2>
+
+        <ul>
+
+            <li><a href="admin.html">🏠 Dashboard</a></li>
+
+            <li><a href="courses.html">📚 Courses</a></li>
+
+            <li><a href="#">🎥 Lessons</a></li>
+
+            <li><a href="#">📄 Notes</a></li>
+
+            <li><a href="#">📝 Quizzes</a></li>
+
+            <li><a href="#">📢 Announcements</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- CONTENT -->
+
+    <section class="content">
+
+        <h2>
+
+            Create Lesson
+
+        </h2>
+
+        <section class="panel">
+
+            <select id="courseSelect">
+
+                <option value="">
+
+                    Select Course
+
+                </option>
+
+            </select>
+
+            <input
+            type="text"
+            id="lessonTitle"
+            placeholder="Lesson Title">
+
+            <textarea
+            id="lessonDescription"
+            placeholder="Lesson Description"></textarea>
+
+            <input
+            type="text"
+            id="videoUrl"
+            placeholder="Video URL">
+
+            <input
+            type="text"
+            id="pdfUrl"
+            placeholder="PDF URL">
+
+            <input
+            type="text"
+            id="homework"
+            placeholder="Homework">
+
+            <button id="saveLesson">
+
+                Save Lesson
+
+            </button>
+
+        </section>
+
+        <section class="panel">
+
+            <h2>
+
+                Search Lessons
+
+            </h2>
+
+            <input
+            type="text"
+            id="searchLesson"
+            placeholder="Search Lesson">
+
+        </section>
+
+        <section class="panel">
+
+            <h2>
+
+                Lessons
+
+            </h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Course</th>
+
+                        <th>Lesson</th>
+
+                        <th>Video</th>
+
+                        <th>PDF</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="lessonTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </section>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+
+<script src="lessons.js"></script>
+
+</body>
+
+</html>

@@ -1,51 +1,219 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phathu Academy Admin</title>
+<html lang="en">
 
-<link rel="stylesheet" href="style.css">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | Phathu Academy</title>
+
+<link rel="stylesheet" href="admin.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<header class="topbar">
 
-<h1>Phathu Academy</h1>
+    <div>
 
-<h2>Administrator Dashboard</h2>
+        <h1>Phathu Academy</h1>
 
-<div class="stats">
+        <p>Administrator Dashboard</p>
 
-<h3>Total Students:
-<span id="totalStudents">0</span>
+    </div>
 
-</h3>
+    <button id="logoutBtn">
 
-<h3>Pending Approval:
-<span id="pendingStudents">0</span>
+        Logout
 
-</h3>
+    </button>
 
-<h3>Approved Students:
-<span id="approvedStudents">0</span>
+</header>
 
-</h3>
+<main class="dashboard">
 
-</div>
+    <!-- LEFT SIDEBAR -->
 
-<hr>
+    <aside class="sidebar">
 
-<h2>Registered Students</h2>
+        <h2>Navigation</h2>
 
-<div id="students"></div>
+        <ul>
 
-</div>
+            <li><a href="#">🏠 Dashboard</a></li>
+
+            <li><a href="#">👨‍🎓 Students</a></li>
+
+            <li><a href="#">📚 Courses</a></li>
+
+            <li><a href="#">📄 Notes</a></li>
+
+            <li><a href="#">🎥 Videos</a></li>
+
+            <li><a href="#">📝 Quizzes</a></li>
+
+            <li><a href="#">📢 Announcements</a></li>
+
+            <li><a href="#">⚙ Settings</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <section class="content">
+
+        <h2>
+
+            Welcome Administrator 👋
+
+        </h2>
+
+        <!-- Statistics -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Total Students</h3>
+
+                <p id="totalStudents">
+
+                    0
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Approved</h3>
+
+                <p id="approvedStudents">
+
+                    0
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Pending</h3>
+
+                <p id="pendingStudents">
+
+                    0
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Courses</h3>
+
+                <p>
+
+                    2
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Search -->
+
+        <section class="panel">
+
+            <h2>
+
+                Search Student
+
+            </h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search student..."
+            >
+
+        </section>
+
+        <!-- Student Table -->
+
+        <section class="panel">
+
+            <h2>
+
+                Registered Students
+
+            </h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Grade</th>
+
+                        <th>Email</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="studentTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- Announcement -->
+
+        <section class="panel">
+
+            <h2>
+
+                Academy Announcement
+
+            </h2>
+
+            <textarea
+                id="announcement"
+                placeholder="Write announcement..."
+            ></textarea>
+
+            <button id="postAnnouncement">
+
+                Post Announcement
+
+            </button>
+
+        </section>
+
+    </section>
+
+</main>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script src="firebase.js"></script>
@@ -53,4 +221,5 @@
 <script src="admin.js"></script>
 
 </body>
+
 </html>
