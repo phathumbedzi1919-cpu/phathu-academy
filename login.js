@@ -41,7 +41,27 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
         if (account.role === "admin") {
 
-            window.location.href = "admin.html";
+            // Check user role
+
+if (account.role === "admin") {
+
+    window.location.href = "admin.html";
+
+}
+
+else if (account.role === "student") {
+
+    window.location.href = "dashboard.html";
+
+}
+
+else {
+
+    message.innerHTML = "Unknown account role.";
+
+    await auth.signOut();
+
+}
 
         }
 
