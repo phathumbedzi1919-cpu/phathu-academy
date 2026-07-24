@@ -43,111 +43,85 @@
 
         <ul>
 
-            <li><a href="#">🏠 Dashboard</a></li>
 
-            <li><a href="#">👨‍🎓 Students</a></li>
+<li><a href="#" onclick="showPage('dashboardPage')">🏠 Dashboard</a></li>
 
-            <li><a href="#">📚 Courses</a></li>
+<li><a href="#" onclick="showPage('studentsPage')">👨‍🎓 Students</a></li>
 
-            <li><a href="#">📄 Notes</a></li>
+<li><a href="#" onclick="showPage('coursesPage')">📚 Courses</a></li>
 
-            <li><a href="#">🎥 Videos</a></li>
+<li><a href="#" onclick="showPage('notesPage')">📄 Notes</a></li>
 
-            <li><a href="#">📝 Quizzes</a></li>
+<li><a href="#" onclick="showPage('videosPage')">🎥 Videos</a></li>
 
-            <li><a href="#">📢 Announcements</a></li>
+<li><a href="#" onclick="showPage('quizzesPage')">📝 Quizzes</a></li>
 
-            <li><a href="#">⚙ Settings</a></li>
+<li><a href="#" onclick="showPage('announcementsPage')">📢 Announcements</a></li>
 
-        </ul>
+<li><a href="#" onclick="showPage('settingsPage')">⚙️ Settings</a></li>
+
+</ul>
+
+    
 
     </aside>
 
     <!-- MAIN CONTENT -->
 
-    <section class="content">
+    <
 
-        <h2>
+        <section class="content">
 
-            Welcome Administrator 👋
+<div id="dashboardPage">
 
-        </h2>
+<h2>Welcome Administrator 👋</h2>
 
-        <!-- Statistics -->
+<p>Select a menu option from the left to manage your academy.</p>
 
-        <div class="cards">
+</div>
+<div id="studentsPage" style="display:none;">
+<h2>👨‍🎓 Student Management</h2>
+<p>Manage all registered students here.</p>
+</div>
 
-            <div class="card">
+<div id="coursesPage" style="display:none;">
+<h2>📚 Course Management</h2>
+<p>Create and manage academy courses.</p>
+</div>
 
-                <h3>Total Students</h3>
+<div id="notesPage" style="display:none;">
+<h2>📄 Notes Management</h2>
+<p>Upload and organize study notes.</p>
+</div>
 
-                <p id="totalStudents">
+<div id="videosPage" style="display:none;">
+<h2>🎥 Video Management</h2>
+<p>Upload and manage lesson videos.</p>
+</div>
 
-                    0
+<div id="quizzesPage" style="display:none;">
+<h2>📝 Quiz Management</h2>
+<p>Create and manage quizzes.</p>
+</div>
 
-                </p>
+<div id="announcementsPage" style="display:none;">
+<h2>📢 Announcements</h2>
+<p>Post announcements for students.</p>
+</div>
 
-            </div>
+<div id="settingsPage" style="display:none;">
+<h2>⚙️ Settings</h2>
+<p>Configure your academy.</p>
+</div>
 
-            <div class="card">
-
-                <h3>Approved</h3>
-
-                <p id="approvedStudents">
-
-                    0
-
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Pending</h3>
-
-                <p id="pendingStudents">
-
-                    0
-
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Courses</h3>
-
-                <p>
-
-                    2
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- Search -->
-
-        <section class="panel">
-
-            <h2>
-
-                Search Student
-
-            </h2>
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search student..."
-            >
 
         </section>
 
-        <!-- Student Table -->
+        
 
-        <section class="panel">
+        
+
+    
 
             <h2>
 
@@ -223,3 +197,32 @@
 </body>
 
 </html>
+// ---------- PAGE NAVIGATION ----------
+
+function hideAllPages(){
+
+document.getElementById("dashboardPage").style.display="none";
+
+document.getElementById("studentsPage").style.display="none";
+
+document.getElementById("coursesPage").style.display="none";
+
+document.getElementById("notesPage").style.display="none";
+
+document.getElementById("videosPage").style.display="none";
+
+document.getElementById("quizzesPage").style.display="none";
+
+document.getElementById("announcementsPage").style.display="none";
+
+document.getElementById("settingsPage").style.display="none";
+
+}
+
+function showPage(page){
+
+hideAllPages();
+
+document.getElementById(page).style.display="block";
+
+}
