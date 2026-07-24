@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Content Manager | Phathu Academy</title>
+
+<link rel="stylesheet" href="css/admin-upload.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Phathu Academy</h1>
+
+<p>Content Management System</p>
+
+</header>
+
+<div class="container">
+
+<h2>Upload Learning Content</h2>
+
+<form id="uploadForm">
+
+<label>Content Title</label>
+
+<input
+type="text"
+id="title"
+placeholder="Example: Algebra Lesson 1"
+required>
+
+<label>Grade</label>
+
+<select id="grade" required>
+
+<option value="">Select Grade</option>
+
+<option>Grade 8</option>
+
+<option>Grade 9</option>
+
+<option>Grade 10</option>
+
+<option>Grade 11</option>
+
+<option>Grade 12</option>
+
+</select>
+
+<label>Subject</label>
+
+<select id="subject" required>
+
+<option value="">Select Subject</option>
+
+<option>Mathematics</option>
+
+<option>Physical Sciences</option>
+
+</select>
+
+<label>Content Type</label>
+
+<select id="contentType" required>
+
+<option value="">Select Type</option>
+
+<option value="pdf">PDF Document</option>
+
+<option value="video">Video Lesson</option>
+
+</select>
+
+<label>Select File</label>
+
+<input
+type="file"
+id="file"
+accept=".pdf,video/*"
+required>
+
+<button type="submit">
+
+Upload Content
+
+</button>
+
+</form>
+
+<p id="message"></p>
+
+</div>
+
+<script src="js/firebase-config.js"></script>
+<script src="js/admin-upload.js"></script>
+
+</body>
+
+  </html>
