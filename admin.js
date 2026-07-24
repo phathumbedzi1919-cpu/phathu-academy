@@ -1,96 +1,48 @@
-const studentsDiv = document.getElementById("students");
+// =========================
+// PAGE NAVIGATION
+// =========================
 
-const totalStudents = document.getElementById("totalStudents");
-const pendingStudents = document.getElementById("pendingStudents");
-const approvedStudents = document.getElementById("approvedStudents");
+function hideAllPages() {
 
-db.collection("students").onSnapshot((snapshot)=>{
-
-studentsDiv.innerHTML="";
-
-let total=0;
-let pending=0;
-let approved=0;
-
-snapshot.forEach((doc)=>{
-
-total++;
-
-const student=doc.data();
-
-if(student.approved){
-
-approved++;
-
-}else{
-
-pending++;
+    document.getElementById("dashboardPage").style.display = "none";
+    document.getElementById("studentsPage").style.display = "none";
+    document.getElementById("coursesPage").style.display = "none";
+    document.getElementById("notesPage").style.display = "none";
+    document.getElementById("videosPage").style.display = "none";
+    document.getElementById("quizzesPage").style.display = "none";
+    document.getElementById("announcementsPage").style.display = "none";
+    document.getElementById("settingsPage").style.display = "none";
 
 }
 
-studentsDiv.innerHTML+=`
+function showPage(page) {
 
-<div class="student-card">
+    hideAllPages();
 
-<h3>${student.fullname}</h3>
+    document.getElementById(page).style.display = "block";
 
-<p><strong>Email:</strong> ${student.email}</p>
+}
 
-<p><strong>Phone:</strong> ${student.phone}</p>
+// Show dashboard when the page loads
+showPage("dashboardPage");
 
-<p><strong>Grade:</strong> ${student.grade}</p>
 
-<p><strong>Subjects:</strong> ${student.subjects}</p>
+// =========================
+// LOGOUT
+// =========================
 
-<p><strong>Status:</strong>
+document.getElementById("logoutBtn").addEventListener("click", async () => {
 
-${student.approved ? "Approved ✅" : "Pending ⏳"}
+    try {
 
-</p>
+        await firebase.auth().signOut();
 
-<button onclick="approveStudent('${doc.id}')">
+        window.location.href = "index.html";
 
-Approve
+    } catch (error) {
 
-</button>
+        alert(error.message);
 
-<button onclick="deleteStudent('${doc.id}')">
-
-Delete
-
-</button>
-
-</div>
-
-`;
+    }
 
 });
-
-totalStudents.innerHTML=total;
-pendingStudents.innerHTML=pending;
-approvedStudents.innerHTML=approved;
-
-});
-
-function approveStudent(id){
-
-db.collection("students").doc(id).update({
-
-approved:true,
-payment:"paid"
-
-});
-
-alert("Student Approved Successfully.");
-
-}
-
-function deleteStudent(id){
-
-if(confirm("Delete this student?")){
-
-db.collection("students").doc(id).delete();
-
-}
-
-}
