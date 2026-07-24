@@ -123,7 +123,28 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+function hideAllPages(){
 
+document.getElementById("dashboardPage").style.display="none";
+document.getElementById("studentsPage").style.display="none";
+document.getElementById("coursesPage").style.display="none";
+document.getElementById("notesPage").style.display="none";
+document.getElementById("videosPage").style.display="none";
+document.getElementById("quizzesPage").style.display="none";
+document.getElementById("announcementsPage").style.display="none";
+document.getElementById("settingsPage").style.display="none";
+
+}
+
+function showPage(page){
+
+hideAllPages();
+
+document.getElementById(page).style.display="block";
+
+}
+    </script>
 <script src="firebase.js"></script>
 <script src="admin.js"></script>
 
