@@ -4,10 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Dashboard | Phathu Academy</title>
+<title>Phathu Academy Admin</title>
 
 <link rel="stylesheet" href="admin.css">
 
@@ -17,32 +16,19 @@
 
 <header class="topbar">
 
-    <div>
+<h1>Phathu Academy</h1>
 
-        <h1>Phathu Academy</h1>
-
-        <p>Administrator Dashboard</p>
-
-    </div>
-
-    <button id="logoutBtn">
-
-        Logout
-
-    </button>
+<button id="logoutBtn">Logout</button>
 
 </header>
 
-<main class="dashboard">
+<div class="dashboard">
 
-    <!-- LEFT SIDEBAR -->
+<aside class="sidebar">
 
-    <aside class="sidebar">
+<h2>Navigation</h2>
 
-        <h2>Navigation</h2>
-
-        <ul>
-
+<ul>
 
 <li><a href="#" onclick="showPage('dashboardPage')">🏠 Dashboard</a></li>
 
@@ -58,171 +44,90 @@
 
 <li><a href="#" onclick="showPage('announcementsPage')">📢 Announcements</a></li>
 
-<li><a href="#" onclick="showPage('settingsPage')">⚙️ Settings</a></li>
+<li><a href="#" onclick="showPage('settingsPage')">⚙ Settings</a></li>
 
 </ul>
 
-    
+</aside>
 
-    </aside>
-
-    <!-- MAIN CONTENT -->
-
-    <
-
-        <section class="content">
+<main class="content">
 
 <div id="dashboardPage">
 
-<h2>Welcome Administrator 👋</h2>
+<h2>Dashboard</h2>
 
-<p>Select a menu option from the left to manage your academy.</p>
+<p>Welcome to the Phathu Academy Administrator Dashboard.</p>
 
 </div>
+
 <div id="studentsPage" style="display:none;">
-<h2>👨‍🎓 Student Management</h2>
-<p>Manage all registered students here.</p>
+
+<h2>Student Management</h2>
+
+<p>Manage students here.</p>
+
 </div>
 
 <div id="coursesPage" style="display:none;">
-<h2>📚 Course Management</h2>
-<p>Create and manage academy courses.</p>
+
+<h2>Course Management</h2>
+
+<p>Manage courses here.</p>
+
 </div>
 
 <div id="notesPage" style="display:none;">
-<h2>📄 Notes Management</h2>
-<p>Upload and organize study notes.</p>
+
+<h2>Notes Management</h2>
+
+<p>Upload and manage notes here.</p>
+
 </div>
 
 <div id="videosPage" style="display:none;">
-<h2>🎥 Video Management</h2>
-<p>Upload and manage lesson videos.</p>
+
+<h2>Video Management</h2>
+
+<p>Upload and manage videos here.</p>
+
 </div>
 
 <div id="quizzesPage" style="display:none;">
-<h2>📝 Quiz Management</h2>
-<p>Create and manage quizzes.</p>
+
+<h2>Quiz Management</h2>
+
+<p>Create quizzes here.</p>
+
 </div>
 
 <div id="announcementsPage" style="display:none;">
-<h2>📢 Announcements</h2>
-<p>Post announcements for students.</p>
+
+<h2>Announcements</h2>
+
+<p>Post academy announcements here.</p>
+
 </div>
 
 <div id="settingsPage" style="display:none;">
-<h2>⚙️ Settings</h2>
-<p>Configure your academy.</p>
+
+<h2>Settings</h2>
+
+<p>Manage academy settings here.</p>
+
 </div>
-
-
-        </section>
-
-        
-
-        
-
-    
-
-            <h2>
-
-                Registered Students
-
-            </h2>
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Name</th>
-
-                        <th>Grade</th>
-
-                        <th>Email</th>
-
-                        <th>Status</th>
-
-                        <th>Action</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="studentTable">
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-        <!-- Announcement -->
-
-        <section class="panel">
-
-            <h2>
-
-                Academy Announcement
-
-            </h2>
-
-            <textarea
-                id="announcement"
-                placeholder="Write announcement..."
-            ></textarea>
-
-            <button id="postAnnouncement">
-
-                Post Announcement
-
-            </button>
-
-        </section>
-
-    </section>
 
 </main>
 
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script src="firebase.js"></script>
-
 <script src="admin.js"></script>
 
 </body>
 
-</html>
-// ---------- PAGE NAVIGATION ----------
-
-function hideAllPages(){
-
-document.getElementById("dashboardPage").style.display="none";
-
-document.getElementById("studentsPage").style.display="none";
-
-document.getElementById("coursesPage").style.display="none";
-
-document.getElementById("notesPage").style.display="none";
-
-document.getElementById("videosPage").style.display="none";
-
-document.getElementById("quizzesPage").style.display="none";
-
-document.getElementById("announcementsPage").style.display="none";
-
-document.getElementById("settingsPage").style.display="none";
-
-}
-
-function showPage(page){
-
-hideAllPages();
-
-document.getElementById(page).style.display="block";
-
-}
+    </html>
+    
