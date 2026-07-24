@@ -1,46 +1,106 @@
-document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+document.getElementById("uploadForm").addEventListener("submit", async function(e){
 
     e.preventDefault();
 
     const title = document.getElementById("title").value;
     const grade = document.getElementById("grade").value;
     const subject = document.getElementById("subject").value;
-    const contentType = document.getElementById("contentType").value;
+    const type = document.getElementById("contentType").value;
     const file = document.getElementById("file").files[0];
 
     const message = document.getElementById("message");
 
-    if (!file) {
-        message.innerHTML = "Please select a file.";
+    if(!file){
+
+        message.style.color = "red";
+        message.innerHTML = "Please choose a file.";
+
         return;
+
     }
 
-    try {
+    try{
 
-        await db.collection("content").add({
+        message.style.color = "blue";
+        message.innerHTML = "Uploading...";
 
-            title: title,
+        const storageRef = firebase.storage().ref();
 
-            grade: grade,
+        const filePath =
+        subject + "/" +
+        grade + "/" +
+        Date.now() + "_" +
+        file.name;
 
-            subject: subject,
+        const uploadTask =
+        storageRef.child(filePath).put(file);
 
-            type: contentType,
+        uploadTask.on(
 
-            fileName: file.name,
+            "state_changed",
 
-            fileSize: file.size,
+            function(snapshot){
 
-            uploadedAt: firebase.firestore.FieldValue.serverTimestamp()
+                const progress =
+                (snapshot.bytesTransferred /
+                snapshot.totalBytes) * 100;
 
-        });
+                message.style.color = "blue";
+                message.innerHTML =
+                "Uploading " +
+                progress.toFixed(0) +
+                "%";
 
-        message.style.color = "green";
-        message.innerHTML = "Content uploaded successfully!";
+            },
 
-        document.getElementById("uploadForm").reset();
+            function(error){
 
-    } catch (error) {
+                message.style.color = "red";
+                message.innerHTML = error.message;
+
+            },
+
+            async function(){
+
+                const downloadURL =
+                await uploadTask.snapshot.ref.getDownloadURL();
+
+                await db.collection("content").add({
+
+                    title:title,
+
+                    grade:grade,
+
+                    subject:subject,
+
+                    type:type,
+
+                    fileName:file.name,
+
+                    fileSize:file.size,
+
+                    downloadURL:downloadURL,
+
+                    storagePath:filePath,
+
+                    uploadedAt:
+                    firebase.firestore.FieldValue.serverTimestamp()
+
+                });
+
+                message.style.color = "green";
+                message.innerHTML =
+                "Content uploaded successfully.";
+
+                document.getElementById("uploadForm").reset();
+
+            }
+
+        );
+
+    }
+
+    catch(error){
 
         message.style.color = "red";
         message.innerHTML = error.message;
