@@ -17,28 +17,51 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
         if (!doc.exists) {
 
-            message.innerHTML = "Student account not found.";
+            message.innerHTML = "Account not found.";
+
+            await auth.signOut();
 
             return;
 
         }
 
-        const student = doc.data();
+        const account = doc.data();
 
-        if (student.approved === false) {
+        if (account.approved === false) {
 
-            message.innerHTML =
-                "Your account is still waiting for approval from Phathu Academy.";
+            message.innerHTML = "Your account is still waiting for approval.";
 
-            auth.signOut();
+            await auth.signOut();
 
             return;
 
         }
 
-        window.location.href = "dashboard.html";
+        // ROLE-BASED LOGIN
 
-    } catch (error) {
+        if (account.role === "admin") {
+
+            window.location.href = "admin.html";
+
+        }
+
+        else if (account.role === "student") {
+
+            window.location.href = "dashboard.html";
+
+        }
+
+        else {
+
+            message.innerHTML = "Unknown account role.";
+
+            await auth.signOut();
+
+        }
+
+    }
+
+    catch (error) {
 
         message.innerHTML = error.message;
 
