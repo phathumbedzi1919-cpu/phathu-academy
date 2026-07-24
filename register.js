@@ -32,6 +32,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
             subjects: subjects,
             approved: false,
             payment: "pending"
+            role: "student",
         });
 
         message.innerHTML = "Account created successfully! Please wait for approval.";
