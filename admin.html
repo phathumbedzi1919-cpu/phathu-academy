@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Phathu Academy Admin</title>
+<title>Phathu Academy - Admin Dashboard</title>
 
 <link rel="stylesheet" href="admin.css">
 
@@ -16,13 +16,27 @@
 
 <header class="topbar">
 
+<div class="logo">
+
 <h1>Phathu Academy</h1>
 
-<button id="logoutBtn">Logout</button>
+<p>Administrator Dashboard</p>
+
+</div>
+
+<div class="top-actions">
+
+<button id="logoutBtn">
+Logout
+</button>
+
+</div>
 
 </header>
 
-<div class="dashboard">
+<div class="container">
+
+<!-- SIDEBAR -->
 
 <aside class="sidebar">
 
@@ -30,91 +44,87 @@
 
 <ul>
 
-<li><a href="#" onclick="showPage('dashboardPage')">🏠 Dashboard</a></li>
+<li id="nav-dashboard">🏠 Dashboard</li>
 
-<li><a href="#" onclick="showPage('studentsPage')">👨‍🎓 Students</a></li>
+<li id="nav-students">👨‍🎓 Students</li>
 
-<li><a href="#" onclick="showPage('coursesPage')">📚 Courses</a></li>
+<li id="nav-courses">📚 Courses</li>
 
-<li><a href="#" onclick="showPage('notesPage')">📄 Notes</a></li>
+<li id="nav-upload">⬆ Upload Center</li>
 
-<li><a href="#" onclick="showPage('videosPage')">🎥 Videos</a></li>
+<li id="nav-notes">📄 Notes</li>
 
-<li><a href="#" onclick="showPage('quizzesPage')">📝 Quizzes</a></li>
+<li id="nav-videos">🎥 Videos</li>
 
-<li><a href="#" onclick="showPage('announcementsPage')">📢 Announcements</a></li>
+<li id="nav-quizzes">📝 Quizzes</li>
 
-<li><a href="#" onclick="showPage('settingsPage')">⚙ Settings</a></li>
+<li id="nav-announcements">📢 Announcements</li>
+
+<li id="nav-settings">⚙ Settings</li>
 
 </ul>
 
 </aside>
 
-<main class="content">
+<!-- MAIN CONTENT -->
 
-<div id="dashboardPage">
+<main class="main-content">
+
+<section id="dashboardPage" class="page">
 
 <h2>Dashboard</h2>
 
-<p>Welcome to the Phathu Academy Administrator Dashboard.</p>
+<p>Welcome to Phathu Academy.</p>
 
-</div>
+</section>
 
-<div id="studentsPage" style="display:none;">
+<section id="studentsPage" class="page" style="display:none;">
 
-<h2>Student Management</h2>
+<h2>Students</h2>
 
-<p>Manage students here.</p>
+</section>
 
-</div>
+<section id="coursesPage" class="page" style="display:none;">
 
-<div id="coursesPage" style="display:none;">
+<h2>Courses</h2>
 
-<h2>Course Management</h2>
+</section>
 
-<p>Manage courses here.</p>
+<section id="uploadPage" class="page" style="display:none;">
 
-</div>
+<h2>Upload Center</h2>
 
-<div id="notesPage" style="display:none;">
+</section>
 
-<h2>Notes Management</h2>
+<section id="notesPage" class="page" style="display:none;">
 
-<p>Upload and manage notes here.</p>
+<h2>Notes</h2>
 
-</div>
+</section>
 
-<div id="videosPage" style="display:none;">
+<section id="videosPage" class="page" style="display:none;">
 
-<h2>Video Management</h2>
+<h2>Videos</h2>
 
-<p>Upload and manage videos here.</p>
+</section>
 
-</div>
+<section id="quizzesPage" class="page" style="display:none;">
 
-<div id="quizzesPage" style="display:none;">
+<h2>Quizzes</h2>
 
-<h2>Quiz Management</h2>
+</section>
 
-<p>Create quizzes here.</p>
-
-</div>
-
-<div id="announcementsPage" style="display:none;">
+<section id="announcementsPage" class="page" style="display:none;">
 
 <h2>Announcements</h2>
 
-<p>Post academy announcements here.</p>
+</section>
 
-</div>
-
-<div id="settingsPage" style="display:none;">
+<section id="settingsPage" class="page" style="display:none;">
 
 <h2>Settings</h2>
 
-<p>Manage academy settings here.</p>
-
-</div>
+</section>
 
 </main>
 
@@ -123,32 +133,10 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script>
-function hideAllPages(){
 
-document.getElementById("dashboardPage").style.display="none";
-document.getElementById("studentsPage").style.display="none";
-document.getElementById("coursesPage").style.display="none";
-document.getElementById("notesPage").style.display="none";
-document.getElementById("videosPage").style.display="none";
-document.getElementById("quizzesPage").style.display="none";
-document.getElementById("announcementsPage").style.display="none";
-document.getElementById("settingsPage").style.display="none";
-
-}
-
-function showPage(page){
-
-hideAllPages();
-
-document.getElementById(page).style.display="block";
-
-}
-    </script>
 <script src="firebase.js"></script>
 <script src="admin.js"></script>
 
 </body>
 
-    </html>
-    
+</html>
