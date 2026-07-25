@@ -1,48 +1,71 @@
-// =========================
+// =============================
+// PHATHU ACADEMY ADMIN V2
+// =============================
+
+// Logout Button
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", async () => {
+
+        try {
+
+            await firebase.auth().signOut();
+
+            window.location.href = "login.html";
+
+        } catch (error) {
+
+            alert(error.message);
+
+        }
+
+    });
+
+}
+
+
+// =============================
 // PAGE NAVIGATION
-// =========================
+// =============================
 
-function hideAllPages() {
+const pages = document.querySelectorAll(".page");
 
-    document.getElementById("dashboardPage").style.display = "none";
-    document.getElementById("studentsPage").style.display = "none";
-    document.getElementById("coursesPage").style.display = "none";
-    document.getElementById("notesPage").style.display = "none";
-    document.getElementById("videosPage").style.display = "none";
-    document.getElementById("quizzesPage").style.display = "none";
-    document.getElementById("announcementsPage").style.display = "none";
-    document.getElementById("settingsPage").style.display = "none";
+function showPage(pageId) {
 
-}
+    pages.forEach(page => {
 
-function showPage(page) {
+        page.style.display = "none";
 
-    hideAllPages();
+    });
 
-    document.getElementById(page).style.display = "block";
+    document.getElementById(pageId).style.display = "block";
 
 }
 
-// Show dashboard when the page loads
-showPage("dashboardPage");
+// Dashboard is the default page
+showPage("dashboard");
 
 
-// =========================
-// LOGOUT
-// =========================
+// =============================
+// PLACEHOLDER FUNCTIONS
+// =============================
 
-document.getElementById("logoutBtn").addEventListener("click", async () => {
+document.getElementById("uploadPDFBtn")?.addEventListener("click", () => {
 
-    try {
+    alert("PDF Upload Module - Coming Next");
 
-        await firebase.auth().signOut();
+});
 
-        window.location.href = "index.html";
+document.getElementById("uploadVideoBtn")?.addEventListener("click", () => {
 
-    } catch (error) {
+    alert("Video Upload Module - Coming Next");
 
-        alert(error.message);
+});
 
-    }
+document.getElementById("postAnnouncement")?.addEventListener("click", () => {
+
+    alert("Announcement Module - Coming Next");
 
 });
