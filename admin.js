@@ -1,71 +1,78 @@
 // =============================
-// PHATHU ACADEMY ADMIN V2
+// NOTES MANAGEMENT
 // =============================
 
-// Logout Button
-const logoutBtn = document.getElementById("logoutBtn");
+const noteForm = document.getElementById("noteForm");
+const notesList = document.getElementById("notesList");
 
-if (logoutBtn) {
+let notes = [];
 
-    logoutBtn.addEventListener("click", async () => {
+if (noteForm) {
 
-        try {
+    noteForm.addEventListener("submit", function (e) {
 
-            await firebase.auth().signOut();
+        e.preventDefault();
 
-            window.location.href = "login.html";
+        const title = document.getElementById("noteTitle").value;
+        const subject = document.getElementById("noteSubject").value;
+        const grade = document.getElementById("noteGrade").value;
+        const file = document.getElementById("noteFile").files[0];
 
-        } catch (error) {
+        notes.push({
+            title,
+            subject,
+            grade,
+            fileName: file.name
+        });
 
-            alert(error.message);
+        displayNotes();
 
-        }
+        noteForm.reset();
+
+        alert("PDF added successfully.");
 
     });
 
 }
 
+function displayNotes() {
 
-// =============================
-// PAGE NAVIGATION
-// =============================
+    notesList.innerHTML = "";
 
-const pages = document.querySelectorAll(".page");
+    notes.forEach((note, index) => {
 
-function showPage(pageId) {
+        notesList.innerHTML += `
 
-    pages.forEach(page => {
+        <div class="card">
 
-        page.style.display = "none";
+            <h3>${note.title}</h3>
+
+            <p>${note.subject}</p>
+
+            <p>${note.grade}</p>
+
+            <p>${note.fileName}</p>
+
+            <button onclick="deleteNote(${index})">
+
+                Delete
+
+            </button>
+
+        </div>
+
+        <br>
+
+        `;
 
     });
 
-    document.getElementById(pageId).style.display = "block";
-
 }
 
-// Dashboard is the default page
-showPage("dashboard");
+function deleteNote(index){
 
+    notes.splice(index,1);
 
-// =============================
-// PLACEHOLDER FUNCTIONS
-// =============================
+    displayNotes();
 
-document.getElementById("uploadPDFBtn")?.addEventListener("click", () => {
-
-    alert("PDF Upload Module - Coming Next");
-
-});
-
-document.getElementById("uploadVideoBtn")?.addEventListener("click", () => {
-
-    alert("Video Upload Module - Coming Next");
-
-});
-
-document.getElementById("postAnnouncement")?.addEventListener("click", () => {
-
-    alert("Announcement Module - Coming Next");
-
-});
+                }
