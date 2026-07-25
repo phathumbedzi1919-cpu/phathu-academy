@@ -91,14 +91,67 @@ Logout
 </section>
 
 <section id="uploadPage" class="page" style="display:none;">
+<section id="notes" class="page" style="display:none;">
 
-<h2>Upload Center</h2>
+<h2>📄 Notes Management</h2>
 
-</section>
+<form id="noteForm">
 
-<section id="notesPage" class="page" style="display:none;">
+<input
+type="text"
+id="noteTitle"
+placeholder="Note Title"
+required>
 
-<h2>Notes</h2>
+<br><br>
+
+<input
+type="text"
+id="noteSubject"
+placeholder="Subject"
+required>
+
+<br><br>
+
+<select id="noteGrade">
+
+<option value="">Select Grade</option>
+
+<option>Grade 10</option>
+
+<option>Grade 11</option>
+
+<option>Grade 12</option>
+
+</select>
+
+<br><br>
+
+<input
+type="file"
+id="noteFile"
+accept=".pdf"
+required>
+
+<br><br>
+
+<button type="submit">
+
+Upload PDF
+
+</button>
+
+</form>
+
+<hr><br>
+
+<h3>Uploaded Notes</h3>
+
+<div id="notesList">
+
+No notes uploaded yet.
+
+</div>
 
 </section>
 
