@@ -8,9 +8,9 @@
 (function () {
     "use strict";
 
-    // ORIGINAL PHATHU ACADEMY FIREBASE PROJECT
+    // OFFICIAL PHATHU ACADEMY FIREBASE CONFIGURATION
     const firebaseConfig = {
-        apiKey: "AIzaSyCzLqy8JGgTtpBbsusyreogoYPyWMTYIw8",
+        apiKey: "AIzaSyCzLqy8TJgTtpBbsusyreogoYPyWMTYIw8",
         authDomain: "phathuacademy.firebaseapp.com",
         databaseURL: "https://phathuacademy-default-rtdb.firebaseio.com",
         projectId: "phathuacademy",
@@ -30,36 +30,34 @@
         ready: null
     };
 
-    // Initialize Firebase and wait for authentication persistence.
+    // Initialize Firebase.
     window.academy.ready = (async function () {
-
         try {
 
             if (typeof firebase === "undefined") {
                 throw new Error(
-                    "Firebase SDK is missing. Check the Firebase script tags in your HTML."
+                    "Firebase SDK did not load. Check your HTML script tags."
                 );
             }
 
-            // Initialize or reuse the Firebase application.
+            // Reuse existing Firebase app if already initialized.
             const app = firebase.apps.length > 0
                 ? firebase.app()
                 : firebase.initializeApp(firebaseConfig);
 
-            // Connect Firebase services.
             const auth = app.auth();
             const db = app.firestore();
             const storage = app.storage();
             const realtimeDB = app.database();
 
-            // Store services globally.
+            // Make services available to other academy files.
             window.academy.app = app;
             window.academy.auth = auth;
             window.academy.db = db;
             window.academy.storage = storage;
             window.academy.realtimeDB = realtimeDB;
 
-            // Configure persistent authentication.
+            // Keep authentication persistent.
             await auth.setPersistence(
                 firebase.auth.Auth.Persistence.LOCAL
             );
@@ -79,10 +77,9 @@
 
             throw error;
         }
-
     })();
 
-    // Shared notification function.
+    // Academy notification helper.
     window.academyMessage = function (message, type) {
 
         let notification = document.getElementById(
@@ -92,7 +89,6 @@
         if (!notification) {
 
             notification = document.createElement("div");
-
             notification.id = "academyNotification";
 
             notification.style.cssText = `
@@ -122,15 +118,15 @@
             "#258bff";
 
         setTimeout(function () {
-
             if (notification.parentNode) {
                 notification.remove();
             }
-
         }, 4500);
     };
 
-    console.log("PHATHU ACADEMY 2.0: Configuration loaded.");
+    console.log(
+        "PHATHU ACADEMY 2.0: Configuration loaded."
+    );
 
 })();
-               
+       
