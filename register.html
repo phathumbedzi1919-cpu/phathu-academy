@@ -1,25 +1,97 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration - Phathu Academy</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Phathu Academy | Register</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #07111f;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 430px;
+            padding: 30px 25px;
+            background: #101f33;
+            border: 1px solid #168bd5;
+            border-radius: 18px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #35c9ff;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #29445f;
+            border-radius: 9px;
+            background: #091626;
+            color: white;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #078de0;
+            border: none;
+            border-radius: 9px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        button:disabled { opacity: .6; }
+
+        #message {
+            text-align: center;
+            overflow-wrap: anywhere;
+            margin-top: 18px;
+        }
+
+        a { color: #35c9ff; }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Phathu Academy</h1>
-    <h2>Create Student Account</h2>
+    <h1>PHATHU ACADEMY</h1>
+    <h2>Request Student Access</h2>
 
     <form id="registerForm">
 
         <input
             type="text"
-            id="fullname"
+            id="fullName"
             placeholder="Full Name"
+            autocomplete="name"
             required
         >
 
@@ -27,6 +99,7 @@
             type="email"
             id="email"
             placeholder="Email Address"
+            autocomplete="email"
             required
         >
 
@@ -34,37 +107,16 @@
             type="tel"
             id="phone"
             placeholder="Phone Number"
-            required
-        >
-
-        <input
-            type="tel"
-            id="parentPhone"
-            placeholder="Parent / Guardian Phone"
-            required
-        >
-
-        <select id="grade">
-
-            <option value="">Select Grade</option>
-
-            <option>Grade 10</option>
-            <option>Grade 11</option>
-            <option>Grade 12</option>
-
-        </select>
-
-        <input
-            type="text"
-            id="subjects"
-            placeholder="Subjects (e.g Mathematics, Physical Sciences)"
+            autocomplete="tel"
             required
         >
 
         <input
             type="password"
             id="password"
-            placeholder="Password"
+            placeholder="Create Password (minimum 8 characters)"
+            autocomplete="new-password"
+            minlength="8"
             required
         >
 
@@ -72,25 +124,38 @@
             type="password"
             id="confirmPassword"
             placeholder="Confirm Password"
+            autocomplete="new-password"
             required
         >
 
-        <button type="submit">
-            Create Account
+        <button type="submit" id="registerButton">
+            REQUEST ACCESS
         </button>
 
     </form>
 
-    <p id="message"></p>
+    <p id="message" role="status"></p>
+
+    <div class="links">
+        <p>Your account will require administrator approval.</p>
+        <p><a href="login.html">Already registered? Login</a></p>
+        <p><a href="index.html">Return Home</a></p>
+    </div>
 
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<!-- Firebase v8.10.1 -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-<script src="firebase.js"></script>
-<script src="register.js"></script>
+<!-- Shared configuration -->
+<script src="./script.js"></script>
+
+<!-- Registration functionality -->
+<script src="./register.js"></script>
 
 </body>
 </html>
