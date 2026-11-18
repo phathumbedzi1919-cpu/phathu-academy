@@ -1,90 +1,90 @@
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
-
     const message = document.getElementById("message");
+    const loginButton = document.querySelector(
+        '#loginForm button[type="submit"]'
+    );
+
+    message.textContent = "";
 
     try {
+        loginButton.disabled = true;
+        loginButton.textContent = "Signing in...";
 
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        // Wait for Firebase initialization and persistence.
+        await window.academy.ready;
+
+        const auth = window.academy.auth;
+        const db = window.academy.db;
+
+        // Authenticate account.
+        const userCredential =
+            await auth.signInWithEmailAndPassword(email, password);
 
         const user = userCredential.user;
 
-        const doc = await db.collection("students").doc(user.uid).get();
+        // Read the existing user profile.
+        const doc = await db
+            .collection("users")
+            .doc(user.uid)
+            .get();
 
         if (!doc.exists) {
-
-            message.innerHTML = "Account not found.";
+            message.textContent =
+                "Your account profile was not found. Please contact the administrator.";
 
             await auth.signOut();
-
             return;
-
         }
 
         const account = doc.data();
 
-        if (account.approved === false) {
-
-            message.innerHTML = "Your account is still waiting for approval.";
-
-            await auth.signOut();
-
-            return;
-
-        }
-
-        // ROLE-BASED LOGIN
-
+        // Administrator login.
         if (account.role === "admin") {
-
-            // Check user role
-
-if (account.role === "admin") {
-
-    window.location.href = "admin.html";
-
-}
-
-else if (account.role === "student") {
-
-    window.location.href = "dashboard.html";
-
-}
-
-else {
-
-    message.innerHTML = "Unknown account role.";
-
-    await auth.signOut();
-
-}
-
+            window.location.href = "admin.html";
+            return;
         }
 
-        else if (account.role === "student") {
+        // Student login.
+        if (account.role === "student") {
+
+            if (account.status !== "approved") {
+                message.textContent =
+                    "Your account is awaiting administrator approval.";
+
+                await auth.signOut();
+                return;
+            }
 
             window.location.href = "dashboard.html";
-
+            return;
         }
 
-        else {
+        message.textContent = "Unknown account role.";
+        await auth.signOut();
 
-            message.innerHTML = "Unknown account role.";
+    } catch (error) {
 
-            await auth.signOut();
+        console.error("Login error:", error);
 
+        if (error.code === "permission-denied" ||
+            error.code === "firestore/permission-denied") {
+            message.textContent =
+                "Firestore permission denied. Check your database rules and user profile.";
+        } else {
+            message.textContent = error.message;
         }
 
+    } finally {
+
+        if (loginButton) {
+            loginButton.disabled = false;
+            loginButton.textContent = "Login";
+        }
     }
-
-    catch (error) {
-
-        message.innerHTML = error.message;
-
-    }
-
 });
+        
