@@ -1,18 +1,102 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login</title>
+
+    <title>Phathu Academy | Login</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #07111f;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            padding: 35px 25px;
+            background: #101f33;
+            border: 1px solid #168bd5;
+            border-radius: 18px;
+            box-shadow: 0 0 35px rgba(0,160,255,.12);
+        }
+
+        h1 {
+            text-align: center;
+            color: #35c9ff;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 19px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            margin-bottom: 17px;
+            border-radius: 9px;
+            border: 1px solid #29445f;
+            background: #091626;
+            color: white;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 9px;
+            background: #078de0;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: .6;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            color: #ff7777;
+            overflow-wrap: anywhere;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #35c9ff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Phathu Academy</h1>
-    <h2>Student Login</h2>
+    <h1>PHATHU ACADEMY</h1>
+
+    <h2>Welcome Back</h2>
 
     <form id="loginForm">
 
@@ -20,6 +104,7 @@
             type="email"
             id="email"
             placeholder="Email Address"
+            autocomplete="username"
             required
         >
 
@@ -27,27 +112,38 @@
             type="password"
             id="password"
             placeholder="Password"
+            autocomplete="current-password"
             required
         >
 
-        <button type="submit">
-
-            Login
-
+        <button type="submit" id="loginButton">
+            LOGIN
         </button>
 
     </form>
 
-    <p id="message"></p>
+    <p id="message" role="alert"></p>
+
+    <div class="links">
+        <p><a href="register.html">Create a student account</a></p>
+        <p><a href="index.html">Return to homepage</a></p>
+    </div>
 
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<!-- Firebase v8 SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-<script src="firebase.js"></script>
-<script src="login.js"></script>
+<!-- Central Firebase configuration -->
+<script src="./script.js"></script>
+
+<!-- Login functionality -->
+<script src="./login.js"></script>
 
 </body>
-</html>
+            </html>
+            
