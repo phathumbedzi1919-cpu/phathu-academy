@@ -16,9 +16,11 @@ document.getElementById("registerForm").addEventListener(
             document.getElementById("confirmPassword").value;
 
         message.textContent = "";
+        message.style.color = "#ff7777";
 
         if (password.length < 8) {
-            message.textContent = "Password must have at least 8 characters.";
+            message.textContent =
+                "Password must have at least 8 characters.";
             return;
         }
 
@@ -52,10 +54,16 @@ document.getElementById("registerForm").addEventListener(
                     fullName: fullName,
                     email: email,
                     phone: phone,
+
                     role: "student",
+                    approved: false,
                     status: "pending",
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+
+                    createdAt:
+                        firebase.firestore.FieldValue.serverTimestamp()
                 });
+
+            await auth.signOut();
 
             message.style.color = "#22c994";
             message.textContent =
@@ -63,14 +71,10 @@ document.getElementById("registerForm").addEventListener(
 
             document.getElementById("registerForm").reset();
 
-            await auth.signOut();
-
         } catch (error) {
 
             console.error("Registration error:", error);
 
-            // Do not delete the Authentication account if the
-            // Firestore profile write fails.
             if (createdUser) {
                 try {
                     await window.academy.auth.signOut();
@@ -94,4 +98,4 @@ document.getElementById("registerForm").addEventListener(
         }
     }
 );
-        
+                
