@@ -1,195 +1,178 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Phathu Academy - Admin Dashboard</title>
-
-<link rel="stylesheet" href="admin.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phathu Academy - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
 
 <header class="topbar">
-
-<div class="logo">
-
-<h1>Phathu Academy</h1>
-
-<p>Administrator Dashboard</p>
-
-</div>
-
-<div class="top-actions">
-
-<button id="logoutBtn">
-Logout
-</button>
-
-</div>
-
+    <div class="logo">
+        <h1>Phathu Academy</h1>
+        <p>Administrator Dashboard</p>
+    </div>
+    <button id="logoutBtn">Logout</button>
 </header>
 
 <div class="container">
 
-<!-- SIDEBAR -->
-
-<aside class="sidebar">
-
-<h2>Navigation</h2>
-
-<ul>
-
-<li id="nav-dashboard">🏠 Dashboard</li>
-
-<li id="nav-students">👨‍🎓 Students</li>
-
-<li id="nav-courses">📚 Courses</li>
-
-<li id="nav-upload">⬆ Upload Center</li>
-
-<li id="nav-notes">📄 Notes</li>
-
-<li id="nav-videos">🎥 Videos</li>
-
-<li id="nav-quizzes">📝 Quizzes</li>
-
-<li id="nav-announcements">📢 Announcements</li>
-
-<li id="nav-settings">⚙ Settings</li>
-
-</ul>
-
-</aside>
-
-<!-- MAIN CONTENT -->
-
-<main class="main-content">
-
-<section id="dashboardPage" class="page">
-
-<h2>Dashboard</h2>
-
-<p>Welcome to Phathu Academy.</p>
-
-</section>
-
-<section id="studentsPage" class="page" style="display:none;">
-
-<h2>Students</h2>
-
-</section>
-
-<section id="coursesPage" class="page" style="display:none;">
-
-<h2>Courses</h2>
-
-</section>
-
-<section id="uploadPage" class="page" style="display:none;">
-<section id="notes" class="page" style="display:none;">
-
-<h2>📄 Notes Management</h2>
-
-<form id="noteForm">
-
-<input
-type="text"
-id="noteTitle"
-placeholder="Note Title"
-required>
-
-<br><br>
-
-<input
-type="text"
-id="noteSubject"
-placeholder="Subject"
-required>
-
-<br><br>
-
-<select id="noteGrade">
-
-<option value="">Select Grade</option>
-
-<option>Grade 10</option>
-
-<option>Grade 11</option>
-
-<option>Grade 12</option>
-
-</select>
-
-<br><br>
-
-<input
-type="file"
-id="noteFile"
-accept=".pdf"
-required>
-
-<br><br>
-
-<button type="submit">
-
-Upload PDF
-
-</button>
-
-</form>
-
-<hr><br>
-
-<h3>Uploaded Notes</h3>
-
-<div id="notesList">
-
-No notes uploaded yet.
-
-</div>
-
-</section>
-
-<section id="videosPage" class="page" style="display:none;">
-
-<h2>Videos</h2>
-
-</section>
-
-<section id="quizzesPage" class="page" style="display:none;">
-
-<h2>Quizzes</h2>
-
-</section>
-
-<section id="announcementsPage" class="page" style="display:none;">
-
-<h2>Announcements</h2>
-
-</section>
-
-<section id="settingsPage" class="page" style="display:none;">
-
-<h2>Settings</h2>
-
-</section>
-
-</main>
-
+    <aside class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li data-page="dashboardPage">🏠 Dashboard</li>
+            <li data-page="studentsPage">👨‍🎓 Students</li>
+            <li data-page="coursesPage">📚 Courses</li>
+            <li data-page="uploadPage">⬆ Upload Center</li>
+            <li data-page="notesPage">📄 Notes</li>
+            <li data-page="videosPage">🎥 Videos</li>
+            <li data-page="quizzesPage">📝 Quizzes</li>
+            <li data-page="announcementsPage">📢 Announcements</li>
+            <li data-page="settingsPage">⚙ Settings</li>
+        </ul>
+    </aside>
+
+    <main class="content">
+
+        <section id="dashboardPage" class="page">
+            <h2>Welcome to Phathu Academy</h2>
+            <p>Manage your students and learning materials here.</p>
+        </section>
+
+        <section id="studentsPage" class="page" hidden>
+            <h2>Student Management</h2>
+            <p id="studentMessage">Loading registrations...</p>
+            <div id="studentsList"></div>
+        </section>
+
+        <section id="coursesPage" class="page" hidden>
+            <h2>Courses</h2>
+            <p>Course management will be added here.</p>
+        </section>
+
+        <section id="uploadPage" class="page" hidden>
+            <h2>Upload Learning Materials</h2>
+
+            <form id="uploadForm">
+                <label for="title">Content title</label>
+                <input type="text" id="title" required>
+
+                <label for="grade">Grade</label>
+                <select id="grade" required>
+                    <option value="">Select grade</option>
+                    <option value="Grade 10">Grade 10</option>
+                    <option value="Grade 11">Grade 11</option>
+                    <option value="Grade 12">Grade 12</option>
+                </select>
+
+                <label for="subject">Subject</label>
+                <select id="subject" required>
+                    <option value="">Select subject</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Physical Sciences">Physical Sciences</option>
+                    <option value="Life Sciences">Life Sciences</option>
+                </select>
+
+                <label for="contentType">Content type</label>
+                <select id="contentType" required>
+                    <option value="">Select type</option>
+                    <option value="Notes">Notes</option>
+                    <option value="Video">Video</option>
+                    <option value="Worksheet">Worksheet</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="file">Choose file</label>
+                <input type="file" id="file" required>
+
+                <button type="submit">Upload Content</button>
+                <p id="message"></p>
+            </form>
+        </section>
+
+        <section id="notesPage" class="page" hidden>
+            <h2>Notes Management</h2>
+
+            <form id="noteForm">
+                <input type="text" id="noteTitle"
+                    placeholder="Note title" required>
+
+                <input type="text" id="noteSubject"
+                    placeholder="Subject" required>
+
+                <select id="noteGrade" required>
+                    <option value="">Select grade</option>
+                    <option>Grade 10</option>
+                    <option>Grade 11</option>
+                    <option>Grade 12</option>
+                </select>
+
+                <input type="file" id="noteFile"
+                    accept=".pdf,application/pdf" required>
+
+                <button type="submit">Upload PDF</button>
+            </form>
+
+            <h3>Uploaded Notes</h3>
+            <div id="notesList">No notes loaded yet.</div>
+        </section>
+
+        <section id="videosPage" class="page" hidden>
+            <h2>Videos</h2>
+        </section>
+
+        <section id="quizzesPage" class="page" hidden>
+            <h2>Quizzes</h2>
+        </section>
+
+        <section id="announcementsPage" class="page" hidden>
+            <h2>Announcements</h2>
+        </section>
+
+        <section id="settingsPage" class="page" hidden>
+            <h2>Settings</h2>
+        </section>
+
+    </main>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 
 <script src="firebase.js"></script>
 <script src="admin.js"></script>
+<script src="adminstudents.js"></script>
+<script src="adminupload.js"></script>
+
+<script>
+    // Dashboard navigation
+    document.querySelectorAll("[data-page]").forEach(item => {
+        item.addEventListener("click", () => {
+            document.querySelectorAll(".page").forEach(page => {
+                page.hidden = true;
+            });
+
+            const selected = document.getElementById(item.dataset.page);
+            if (selected) selected.hidden = false;
+        });
+    });
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+        try {
+            await window.academy.auth.signOut();
+            window.location.href = "login.html";
+        } catch (error) {
+            alert("Logout failed: " + error.message);
+        }
+    });
+</script>
 
 </body>
-
-</html>
+  </html>
+  
